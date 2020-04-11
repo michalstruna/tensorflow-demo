@@ -64,8 +64,10 @@ def plot_test(inputs, outputs, goals):
     plt.show()
 
 
-def plot_loss(loss):
+def plot_loss(loss, val_loss):
     plt.plot(loss)
+    plt.plot(val_loss)
+    plt.legend(['loss', 'val_loss'])
     plt.xlabel('Epocha')
     plt.ylabel('Chyba')
     plt.grid()

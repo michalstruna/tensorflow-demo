@@ -36,7 +36,7 @@ class Model:
             verbose=verbose
         )
 
-        return hist.history['loss']
+        return hist.history['loss'], hist.history['val_loss']
 
     def test(self, size):
         """Test model with random inputs."""

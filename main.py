@@ -20,9 +20,9 @@ elif args.test:  # Test neural network.
 elif args.train:  # Train neural network.
     epochs, batch, validate = args.train
     model = Model()
-    loss = model.train(int(round(epochs)), int(round(batch)), validate)
+    loss, val_loss = model.train(int(round(epochs)), int(round(batch)), validate)
     model.save()
-    plot_loss(loss)
+    plot_loss(loss, val_loss)
 
 elif args.loss:  # Calculate loss error for different numbers of neurons.
     start, end, step = args.loss
@@ -34,7 +34,7 @@ elif args.loss:  # Calculate loss error for different numbers of neurons.
 
         for j in range(10):
             model = Model(i)
-            loss = model.train(int(round(epochs)), int(round(batch)), validate, 1)
+            loss, val_loss = model.train(int(round(epochs)), int(round(batch)), validate, 1)
             errors[-1].append(loss[-1])
 
         errors[-1] = sum(errors[-1]) / len(errors[-1])
